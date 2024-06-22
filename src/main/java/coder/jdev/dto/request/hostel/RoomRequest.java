@@ -1,6 +1,9 @@
 package coder.jdev.dto.request.hostel;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,14 +15,14 @@ import org.springframework.validation.annotation.Validated;
 @NoArgsConstructor
 public class RoomRequest {
 
-    @NotNull
-    @Positive
-    private Long hostelId;
+	@NotNull
+	@Positive
+	private Long hostelId;
 
-    @Min(1)
-    @Max(9)
-    @NotNull
-    @Positive
-    private Integer floorNo;
+	@Min(1)
+	@Max(9)
+	@NotNull
+	@Positive
+	private Integer floorNo;
 
 }

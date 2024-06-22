@@ -54,17 +54,10 @@ public final class RequestValidators {
             throwException("maximum rooms %d exceeded to this hostel".formatted(MAX_ROOMS), HostelException.class);
         }
 
-        final List<String> failList = new ArrayList<>();
-        if (not(hostelRepository.existsById(request.getHostelId()))) {
+		if (not(hostelRepository.existsById(request.getHostelId()))) {
             throwException("hostel with id %d does not exist.".formatted(request.getHostelId()), HostelException.class);
         }
-
-
-        if (not(failList.isEmpty())) {
-            final String message = String.join(", ", failList) + (failList.size() == 1 ? " is " : " are ") + "already taken.";
-            throwException(message, StudentException.class);
-        }
-    }
+	}
 
     public static void validateStudentRequest(final StudentRequest request, final StudentRepository studentRepository, final UserRepository userRepository) {
         if (studentRepository.existsById(request.getUserId())) {
