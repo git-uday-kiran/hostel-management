@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "config")
 public class Configs {
 
-    private int citiesMaxPageSize;
+	private int citiesMaxPageSize;
 
 }

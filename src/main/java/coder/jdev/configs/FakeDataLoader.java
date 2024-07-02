@@ -37,106 +37,105 @@ import java.util.stream.IntStream;
 public class FakeDataLoader implements CommandLineRunner {
 
 
-    private final Faker faker = new Faker();
-    private Name name = faker.name();
-    private PhoneNumber phoneNumber = faker.phoneNumber();
-    private Address address = faker.address();
-    private Random random = new Random();
+	private final Faker faker = new Faker();
+	private final HostelService hostelService;
+	private final UserService userService;
+	private final RoomService roomService;
+	private final StudentService studentService;
+	private final Name name = faker.name();
+	private final PhoneNumber phoneNumber = faker.phoneNumber();
+	private final Address address = faker.address();
+	private final Random random = new Random();
 
-    private final HostelService hostelService;
-    private final UserService userService;
-    private final RoomService roomService;
-    private final StudentService studentService;
+	@Override
+	public void run(String... args) throws Exception {
+		var hostels = loadHostels();
+		var users = addUsers();
+		var rooms = addRooms(hostels);
+		var students = addStudents(users, rooms);
+	}
 
-    @Override
-    public void run(String... args) throws Exception {
-        var hostels = loadHostels();
-        var users = addUsers();
-        var rooms = addRooms(hostels);
-        var students = addStudents(users, rooms);
-    }
+	public List<Long> loadHostels() {
+		return IntStream.generate(() -> 0)
+			.limit(100)
+			.mapToObj(e -> new HostelRequest(
+				name.fullName(),
+				addressRequest(),
+				email(),
+				mobile()
+			))
+			.map(hostelService::addHostel)
+			.map(HostelResponse::getId)
+			.toList();
+	}
 
-    public List<Long> loadHostels() {
-        return IntStream.generate(() -> 0)
-                .limit(100)
-                .mapToObj(e -> new HostelRequest(
-                        name.fullName(),
-                        addressRequest(),
-                        email(),
-                        mobile()
-                ))
-                .map(hostelService::addHostel)
-                .map(HostelResponse::getId)
-                .toList();
-    }
+	public List<Long> addUsers() {
+		return IntStream.generate(() -> 0)
+			.limit(100)
+			.mapToObj(e -> new UserRequest(
+				LocalDate.ofInstant(faker.date().birthday(17, 30).toInstant(), ZoneId.systemDefault()),
+				name.username(),
+				email(),
+				mobile(),
+				addressRequest(),
+				gender()
+			))
+			.map(userService::addUser)
+			.map(UserResponse::getId)
+			.toList();
+	}
 
-    public List<Long> addUsers() {
-        return IntStream.generate(() -> 0)
-                .limit(100)
-                .mapToObj(e -> new UserRequest(
-                        name.username(),
-                        email(),
-                        mobile(),
-                        addressRequest(),
-                        LocalDate.ofInstant(faker.date().birthday(17, 30).toInstant(), ZoneId.systemDefault()),
-                        gender()
-                ))
-                .map(userService::addUser)
-                .map(UserResponse::getId)
-                .toList();
-    }
+	public List<Long> addRooms(List<Long> hostels) {
+		return IntStream.generate(() -> 0)
+			.limit(100)
+			.mapToObj(e -> new RoomRequest(
+				hostels.get(random.nextInt(hostels.size())),
+				random.nextInt(20)
+			))
+			.map(roomService::addRoom)
+			.map(RoomResponse::getId)
+			.toList();
+	}
 
-    public List<Long> addRooms(List<Long> hostels) {
-        return IntStream.generate(() -> 0)
-                .limit(100)
-                .mapToObj(e -> new RoomRequest(
-                        hostels.get(random.nextInt(hostels.size())),
-                        random.nextInt(20)
-                ))
-                .map(roomService::addRoom)
-                .map(RoomResponse::getId)
-                .toList();
-    }
+	private List<Long> addStudents(List<Long> users, List<Long> rooms) {
+		int max = Math.min(users.size(), rooms.size());
+		return IntStream.range(0, max / 2)
+			.mapToObj(id -> {
+				return new StudentRequest(
+					users.get(id),
+					rooms.get(id),
+					random.nextLong(38376),
+					localDate(faker.date().past(1000, TimeUnit.DAYS)),
+					null
+				);
+			})
+			.map(studentService::addStudent)
+			.map(StudentResponse::getId)
+			.toList();
+	}
 
-    private List<Long> addStudents(List<Long> users, List<Long> rooms) {
-        int max = Math.min(users.size(), rooms.size());
-        return IntStream.range(0, max / 2)
-                .mapToObj(id -> {
-                    return new StudentRequest(
-                            users.get(id),
-                            rooms.get(id),
-                            random.nextLong(38376),
-                            localDate(faker.date().past(1000, TimeUnit.DAYS)),
-                            null
-                    );
-                })
-                .map(studentService::addStudent)
-                .map(StudentResponse::getId)
-                .toList();
-    }
+	private String mobile() {
+		return phoneNumber.subscriberNumber(10);
+	}
 
-    private String mobile() {
-        return phoneNumber.subscriberNumber(10);
-    }
+	private String email() {
+		return name.name().replaceAll("\\W", "") + "@gmail.com";
+	}
 
-    private String email() {
-        return name.name().replaceAll("\\W", "") + "@gmail.com";
-    }
+	private AddressRequest addressRequest() {
+		return new AddressRequest(
+			address.fullAddress(),
+			address.city(),
+			random.nextLong(100, 200),
+			address.zipCode().replaceAll("\\D", "").transform(Integer::valueOf)
+		);
+	}
 
-    private AddressRequest addressRequest() {
-        return new AddressRequest(
-                address.fullAddress(),
-                address.city(),
-                random.nextLong(100, 200),
-                address.zipCode().replaceAll("\\D", "").transform(Integer::valueOf)
-        );
-    }
+	private User.Gender gender() {
+		return User.Gender.values()[(int) (Math.random() * 1)];
+	}
 
-    private User.Gender gender() {
-        return User.Gender.values()[(int) (Math.random() * 1)];
-    }
-
-    private LocalDate localDate(Date date) {
-        return LocalDate.ofInstant(date.toInstant(), ZoneId.systemDefault());
-    }
+	private LocalDate localDate(Date date) {
+		return LocalDate.ofInstant(date.toInstant(), ZoneId.systemDefault());
+	}
 }
