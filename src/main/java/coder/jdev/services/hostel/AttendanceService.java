@@ -22,47 +22,47 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AttendanceService {
 
-    private final AttendanceRepository repository;
-    private final StudentService studentService;
-    private final StaffService staffService;
+	private final AttendanceRepository repository;
+	private final StudentService studentService;
+	private final StaffService staffService;
 
-    public AttendanceResponse findByDate(LocalDate date) throws AttendanceException {
-        return responseOf(repository.findByDate(date).orElseThrow(() -> new AttendanceException("Attendance on date: %s does not exist".formatted(date.toString()))));
-    }
+	public AttendanceResponse findByDate(LocalDate date) throws AttendanceException {
+		return responseOf(repository.findByDate(date).orElseThrow(() -> new AttendanceException("Attendance on date: %s does not exist".formatted(date.toString()))));
+	}
 
-    public AttendanceResponse addAttendance(final AttendanceRequest request) {
-        final Attendance attendance = modelOf(request);
-        repository.saveAndFlush(attendance);
-        log.info("Attendance on {} is created.", request.getDate());
-        return responseOf(attendance);
-    }
+	public AttendanceResponse addAttendance(final AttendanceRequest request) {
+		final Attendance attendance = modelOf(request);
+		repository.saveAndFlush(attendance);
+		log.info("Attendance on {} is created.", request.getDate());
+		return responseOf(attendance);
+	}
 
-    public List<AttendanceResponse> toResponseList(final List<Attendance> attendanceList) {
-        return attendanceList.stream()
-                .map(this::responseOf)
-                .toList();
-    }
+	public List<AttendanceResponse> toResponseList(final List<Attendance> attendanceList) {
+		return attendanceList.stream()
+			.map(this::responseOf)
+			.toList();
+	}
 
-    public AttendanceResponse responseOf(final Attendance attendance) {
-        final List<StudentResponse> studentResponseList = studentService.toResponseList(attendance.getStudents());
-        final List<StaffResponse> staffResponseList = staffService.toResponseList(attendance.getStaff());
-        return AttendanceResponse.builder()
-                .date(attendance.getDate())
-                .studentResponseList(studentResponseList)
-                .staffResponseList(staffResponseList)
-                .build();
-    }
+	public AttendanceResponse responseOf(final Attendance attendance) {
+		final List<StudentResponse> studentResponseList = studentService.toResponseList(attendance.getStudents());
+		final List<StaffResponse> staffResponseList = staffService.toResponseList(attendance.getStaff());
+		return AttendanceResponse.builder()
+			.date(attendance.getDate())
+			.studentResponseList(studentResponseList)
+			.staffResponseList(staffResponseList)
+			.build();
+	}
 
-    public Attendance modelOf(final LocalDate date) {
-        return Attendance.builder()
-                .staff(new ArrayList<>())
-                .students(new ArrayList<>())
-                .date(date)
-                .build();
-    }
+	public Attendance modelOf(final LocalDate date) {
+		return Attendance.builder()
+			.staff(new ArrayList<>())
+			.students(new ArrayList<>())
+			.date(date)
+			.build();
+	}
 
-    public Attendance modelOf(AttendanceRequest request) {
-        return modelOf(request.getDate());
-    }
+	public Attendance modelOf(AttendanceRequest request) {
+		return modelOf(request.getDate());
+	}
 
 }

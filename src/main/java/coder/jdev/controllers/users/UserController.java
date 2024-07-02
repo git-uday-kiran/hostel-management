@@ -17,18 +17,18 @@ import java.util.List;
 @RequestMapping("users")
 public class UserController implements HostelManagementExceptionHandler, ValidationExceptionHandler {
 
-    private final UserService service;
+	private final UserService service;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<UserResponse> getUsers() {
-        return service.findAll();
-    }
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public List<UserResponse> getUsers() {
+		return service.findAll();
+	}
 
-    @PostMapping("add")
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserResponse addUser(@RequestBody @Valid UserRequest request) {
-        return service.addUser(request);
-    }
+	@PostMapping("add")
+	@ResponseStatus(HttpStatus.CREATED)
+	public UserResponse addUser(@RequestBody @Valid UserRequest request) {
+		return service.addUser(request);
+	}
 
 }

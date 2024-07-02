@@ -7,6 +7,6 @@ import java.time.LocalDate;
 @Data
 public class AttendanceRequest {
 
-    private LocalDate date;
+	private LocalDate date;
 
 }

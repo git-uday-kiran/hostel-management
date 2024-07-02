@@ -10,9 +10,9 @@ import org.springframework.web.context.request.WebRequest;
 
 @Configuration
 public interface HostelManagementExceptionHandler {
-    @ExceptionHandler(HostelManagementException.class)
-    default ResponseEntity<ProblemDetail> handle(HostelManagementException exception, WebRequest request) {
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, exception.getMessage());
-        return ResponseEntity.of(problemDetail).build();
-    }
+	@ExceptionHandler(HostelManagementException.class)
+	default ResponseEntity<ProblemDetail> handle(HostelManagementException exception, WebRequest request) {
+		ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, exception.getMessage());
+		return ResponseEntity.of(problemDetail).build();
+	}
 }

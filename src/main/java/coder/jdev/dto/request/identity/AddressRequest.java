@@ -12,23 +12,23 @@ import org.springframework.validation.annotation.Validated;
 @NoArgsConstructor
 public class AddressRequest {
 
-    @NotNull
-    @NotBlank
-    @Size(min = 5, max = 50, message = "address must be within {min} to {max} digits")
-    private String address;
+	@NotNull
+	@NotBlank
+	@Size(min = 5, max = 50, message = "address must be within {min} to {max} digits")
+	private String address;
 
-    @NotNull
-    @NotBlank
-    private String district;
+	@NotNull
+	@NotBlank
+	private String district;
 
-    @NotNull
-    @Positive
-    private Long cityId;
+	@NotNull
+	@Positive
+	private Long cityId;
 
-    @NotNull
-    @Min(value = 100000, message = "pin-code must be six digits")
-    @Max(value = 999999, message = "pin-code must be six digits")
-    private int pincode;
+	@NotNull
+	@Min(value = 100000, message = "pin-code must be six digits")
+	@Max(value = 999999, message = "pin-code must be six digits")
+	private int pincode;
 
 }
 

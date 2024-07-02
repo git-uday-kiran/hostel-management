@@ -14,28 +14,22 @@ import java.time.LocalDateTime;
 @Builder
 public class StudentResponse {
 
-    private Long id;
+	public LocalDate dateOfBirth;
+	private Long id;
+	private String username;
+	private String email;
+	private String mobile;
+	private AddressResponse addressResponse;
+	private User.Gender gender;
 
-    private String username;
+	private RoomResponse roomResponse;
 
-    private String email;
+	private CollegeResponse collegeResponse;
 
-    private String mobile;
+	private LocalDate joiningDate;
 
-    private AddressResponse addressResponse;
+	private LocalDate leaveDate;
 
-    public LocalDate dateOfBirth;
-
-    private User.Gender gender;
-
-    private RoomResponse roomResponse;
-
-    private CollegeResponse collegeResponse;
-
-    private LocalDate joiningDate;
-
-    private LocalDate leaveDate;
-
-    private LocalDateTime lastUpdated;
+	private LocalDateTime lastUpdated;
 
 }

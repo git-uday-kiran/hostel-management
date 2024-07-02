@@ -17,21 +17,21 @@ import org.springframework.validation.annotation.Validated;
 @NoArgsConstructor
 public class HostelRequest {
 
-    @NotNull
-    @NotBlank
-    private String name;
+	@NotNull
+	@NotBlank
+	private String name;
 
-    @Valid
-    @NotNull
-    private AddressRequest addressRequest;
+	@Valid
+	@NotNull
+	private AddressRequest addressRequest;
 
-    @Email
-    @NotNull
-    @NotBlank
-    private String email;
+	@Email
+	@NotNull
+	@NotBlank
+	private String email;
 
-    @NotNull
-    @Pattern(regexp = "(\\+?(91)?\\s{0,2})\\d{10}", message = "doesn't seem to be a valid mobile number")
-    private String mobile;
+	@NotNull
+	@Pattern(regexp = "(\\+?(91)?\\s{0,2})\\d{10}", message = "doesn't seem to be a valid mobile number")
+	private String mobile;
 
 }

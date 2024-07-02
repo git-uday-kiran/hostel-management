@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 @Data
 public class AdminRequest {
 
-    private Long userId;
+	private Long userId;
 
-    private LocalDateTime expiration;
+	private LocalDateTime expiration;
 
 }

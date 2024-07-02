@@ -19,53 +19,53 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AddressService {
 
-    private final CityService cityService;
-    private final AddressRepository repository;
+	private final CityService cityService;
+	private final AddressRepository repository;
 
-    public Address findById(long id) {
-        return repository.findById(id).orElseThrow(() -> new AddressException("Address with id: %d does not exist.".formatted(id)));
-    }
+	public Address findById(long id) {
+		return repository.findById(id).orElseThrow(() -> new AddressException("Address with id: %d does not exist.".formatted(id)));
+	}
 
-    public List<Address> findAll() {
-        return repository.findAll();
-    }
+	public List<Address> findAll() {
+		return repository.findAll();
+	}
 
-    public AddressResponse addAddress(AddressRequest request) {
-        Address address = modelOf(request);
-        repository.saveAndFlush(address);
-        log.info("Address with id: {} is saved.", address.getId());
-        return responseOf(address);
-    }
+	public AddressResponse addAddress(AddressRequest request) {
+		Address address = modelOf(request);
+		repository.saveAndFlush(address);
+		log.info("Address with id: {} is saved.", address.getId());
+		return responseOf(address);
+	}
 
-    public List<AddressResponse> toResponseList(List<Address> addresses) {
-        return addresses.stream()
-                .map(this::responseOf)
-                .toList();
-    }
+	public List<AddressResponse> toResponseList(List<Address> addresses) {
+		return addresses.stream()
+			.map(this::responseOf)
+			.toList();
+	}
 
-    public AddressResponse responseOf(Address address) {
-        return AddressResponse.builder()
-                .id(address.getId())
-                .address(address.getAddress())
-                .district(address.getDistrict())
-                .cityResponse(cityService.responseOf(address.getCity()))
-                .pincode(address.getPincode())
-                .build();
-    }
+	public AddressResponse responseOf(Address address) {
+		return AddressResponse.builder()
+			.id(address.getId())
+			.address(address.getAddress())
+			.district(address.getDistrict())
+			.cityResponse(cityService.responseOf(address.getCity()))
+			.pincode(address.getPincode())
+			.build();
+	}
 
-    public Address modelOf(AddressRequest request) {
-        final City city = cityService.findById(request.getCityId());
-        final State state = city.getState();
-        final Country country = state.getCountry();
+	public Address modelOf(AddressRequest request) {
+		final City city = cityService.findById(request.getCityId());
+		final State state = city.getState();
+		final Country country = state.getCountry();
 
-        return Address.builder()
-                .address(request.getAddress())
-                .district(request.getDistrict())
-                .pincode(request.getPincode())
-                .city(city)
-                .state(state)
-                .country(country)
-                .build();
-    }
+		return Address.builder()
+			.address(request.getAddress())
+			.district(request.getDistrict())
+			.pincode(request.getPincode())
+			.city(city)
+			.state(state)
+			.country(country)
+			.build();
+	}
 
 }

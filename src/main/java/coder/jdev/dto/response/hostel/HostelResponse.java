@@ -8,14 +8,14 @@ import lombok.Data;
 @Builder
 public class HostelResponse {
 
-    private Long id;
+	private Long id;
 
-    private String name;
+	private String name;
 
-    private AddressResponse addressResponse;
+	private AddressResponse addressResponse;
 
-    private String email;
+	private String email;
 
-    private String mobile;
+	private String mobile;
 
 }

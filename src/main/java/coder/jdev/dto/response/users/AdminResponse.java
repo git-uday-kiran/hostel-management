@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Builder
 public class AdminResponse {
 
-    private Long userId;
+	private Long userId;
 
-    private LocalDateTime expiration;
+	private LocalDateTime expiration;
 
 }

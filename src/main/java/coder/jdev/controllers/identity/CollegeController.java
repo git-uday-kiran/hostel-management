@@ -15,17 +15,17 @@ import java.util.List;
 @RequestMapping("colleges")
 public class CollegeController {
 
-    private final CollegeService service;
+	private final CollegeService service;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<CollegeResponse> getAllCities(Pageable pageable) {
-        return service.findAll(pageable);
-    }
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public List<CollegeResponse> getAllCities(Pageable pageable) {
+		return service.findAll(pageable);
+	}
 
-    @GetMapping("find")
-    @ResponseStatus(HttpStatus.OK)
-    public List<TemplateResponse> getCitiesByName(@RequestParam String name, Pageable pageable) {
-        return service.getCollegesByName(name, pageable);
-    }
+	@GetMapping("find")
+	@ResponseStatus(HttpStatus.OK)
+	public List<TemplateResponse> getCitiesByName(@RequestParam String name, Pageable pageable) {
+		return service.getCollegesByName(name, pageable);
+	}
 }

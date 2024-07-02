@@ -7,15 +7,15 @@ import lombok.Data;
 @Builder
 public class CountryResponse {
 
-    private Long id;
+	private Long id;
 
-    private String name;
+	private String name;
 
-    private String phoneCode;
+	private String phoneCode;
 
-    private String capital;
+	private String capital;
 
-    private String currencyName;
+	private String currencyName;
 
-    private String emoji;
+	private String emoji;
 }

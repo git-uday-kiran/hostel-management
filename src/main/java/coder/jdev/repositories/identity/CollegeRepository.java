@@ -13,9 +13,9 @@ import static coder.jdev.utils.Utils.runtimeExceptionSupplier;
 @Repository
 public interface CollegeRepository extends JpaRepository<College, Long> {
 
-    List<College> findAllByCollegeNameLikeIgnoreCase(final String regex, final Pageable pageable);
+	List<College> findAllByCollegeNameLikeIgnoreCase(final String regex, final Pageable pageable);
 
-    default College fetchById(final long id) {
-        return findById(id).orElseThrow(runtimeExceptionSupplier("College with id: %d does not exist.".formatted(id), CollegeException.class));
-    }
+	default College fetchById(final long id) {
+		return findById(id).orElseThrow(runtimeExceptionSupplier("College with id: %d does not exist.".formatted(id), CollegeException.class));
+	}
 }

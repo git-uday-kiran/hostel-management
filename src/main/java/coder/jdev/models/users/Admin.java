@@ -2,9 +2,10 @@ package coder.jdev.models.users;
 
 import coder.jdev.models.hostel.Hostel;
 import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
-import org.apache.catalina.Host;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -15,16 +16,16 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Admin {
 
-    @Id
-    private long id;
+	@Id
+	private long id;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime expiration;
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private LocalDateTime expiration;
 
-    @JoinColumn(nullable = false)
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Hostel hostel;
+	@JoinColumn(nullable = false)
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Hostel hostel;
 
 }
 

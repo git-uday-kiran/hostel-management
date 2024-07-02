@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface StateRepository extends JpaRepository<State, Long> {
 
-    List<State> findAllByCountryId(long countryId);
+	List<State> findAllByCountryId(long countryId);
 
-    List<State> findAllByNameLikeIgnoreCase(final String regex, final Pageable pageable);
+	List<State> findAllByNameLikeIgnoreCase(final String regex, final Pageable pageable);
 
 }

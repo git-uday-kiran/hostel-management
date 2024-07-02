@@ -15,19 +15,19 @@ import java.util.List;
 @RequestMapping("states")
 public class StateController {
 
-    private final StateService service;
+	private final StateService service;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<StateResponse> getAllStates(Pageable pageable) {
-        return service.findAll(pageable);
-    }
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public List<StateResponse> getAllStates(Pageable pageable) {
+		return service.findAll(pageable);
+	}
 
-    @GetMapping("find")
-    @ResponseStatus(HttpStatus.OK)
-    public List<TemplateResponse> getStatesByName(@RequestParam String name, Pageable pageable) {
-        return service.getStatesByName(name, pageable);
-    }
+	@GetMapping("find")
+	@ResponseStatus(HttpStatus.OK)
+	public List<TemplateResponse> getStatesByName(@RequestParam String name, Pageable pageable) {
+		return service.getStatesByName(name, pageable);
+	}
 
 }
 

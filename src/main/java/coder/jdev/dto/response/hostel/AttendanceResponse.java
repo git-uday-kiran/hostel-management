@@ -12,10 +12,10 @@ import java.util.List;
 @Builder
 public class AttendanceResponse {
 
-    LocalDate date;
+	LocalDate date;
 
-    private List<StudentResponse> studentResponseList;
+	private List<StudentResponse> studentResponseList;
 
-    private List<StaffResponse> staffResponseList;
+	private List<StaffResponse> staffResponseList;
 
 }

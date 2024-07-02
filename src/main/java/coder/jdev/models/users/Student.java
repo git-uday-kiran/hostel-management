@@ -18,42 +18,42 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Student {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique = true)
 
-    private long id;
+	private long id;
 
-    @MapsId
-    @JoinColumn(unique = true, nullable = false, updatable = false)
-    @OneToOne(fetch = FetchType.LAZY)
-    private User user;
+	@MapsId
+	@JoinColumn(unique = true, nullable = false, updatable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	private User user;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Room room;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Room room;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private College college;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private College college;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private LocalDate joiningDate;
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private LocalDate joiningDate;
 
-    @Temporal(TemporalType.DATE)
-    private LocalDate leaveDate;
+	@Temporal(TemporalType.DATE)
+	private LocalDate leaveDate;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime lastUpdated;
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private LocalDateTime lastUpdated;
 
-    @PrePersist
-    public void onCreate() {
-        lastUpdated = LocalDateTime.now();
-    }
+	@PrePersist
+	public void onCreate() {
+		lastUpdated = LocalDateTime.now();
+	}
 
-    @PreUpdate
-    public void onUpdate() {
-        log.info("updating student last updated to {}", LocalDateTime.now());
-        lastUpdated = LocalDateTime.now();
-    }
+	@PreUpdate
+	public void onUpdate() {
+		log.info("updating student last updated to {}", LocalDateTime.now());
+		lastUpdated = LocalDateTime.now();
+	}
 }

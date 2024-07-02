@@ -9,10 +9,10 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TemplateResponse {
 
-    private Long id;
+	private Long id;
 
-    private String name;
+	private String name;
 
-    private String district;
+	private String district;
 
 }

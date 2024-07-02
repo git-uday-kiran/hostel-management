@@ -15,18 +15,18 @@ import java.util.List;
 @RequestMapping("countries")
 public class CountryController {
 
-    private final CountryService service;
+	private final CountryService service;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<CountryResponse> getAllCountries(Pageable pageable) {
-        return service.findAll(pageable);
-    }
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public List<CountryResponse> getAllCountries(Pageable pageable) {
+		return service.findAll(pageable);
+	}
 
-    @GetMapping("find")
-    @ResponseStatus(HttpStatus.OK)
-    public List<TemplateResponse> getCountriesByName(@RequestParam String name, Pageable pageable) {
-        return service.getCountriesByName(name, pageable);
-    }
+	@GetMapping("find")
+	@ResponseStatus(HttpStatus.OK)
+	public List<TemplateResponse> getCountriesByName(@RequestParam String name, Pageable pageable) {
+		return service.getCountriesByName(name, pageable);
+	}
 
 }

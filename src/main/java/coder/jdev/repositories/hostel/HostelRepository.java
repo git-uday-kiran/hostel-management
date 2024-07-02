@@ -12,18 +12,18 @@ import static coder.jdev.utils.Utils.runtimeExceptionSupplier;
 @Repository
 public interface HostelRepository extends JpaRepository<Hostel, Long> {
 
-    Optional<Hostel> findByEmail(String email);
+	Optional<Hostel> findByEmail(String email);
 
-    Optional<Hostel> findByMobile(String mobile);
+	Optional<Hostel> findByMobile(String mobile);
 
-    Boolean existsByName(final String name);
+	Boolean existsByName(final String name);
 
-    Boolean existsByEmail(final String email);
+	Boolean existsByEmail(final String email);
 
-    void removeById(final long hostelId);
+	void removeById(final long hostelId);
 
-    default Hostel fetchById(final long id) {
-        return findById(id).orElseThrow(runtimeExceptionSupplier("Hostel with id: %d does not exist".formatted(id), HostelException.class));
-    }
+	default Hostel fetchById(final long id) {
+		return findById(id).orElseThrow(runtimeExceptionSupplier("Hostel with id: %d does not exist".formatted(id), HostelException.class));
+	}
 
 }

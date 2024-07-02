@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 public interface ApplicationExceptionHandler {
-    @ExceptionHandler(Throwable.class)
-    default ResponseEntity<ProblemDetail> handle(Throwable throwable) {
-        return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, throwable.getMessage())).build();
-    }
+	@ExceptionHandler(Throwable.class)
+	default ResponseEntity<ProblemDetail> handle(Throwable throwable) {
+		return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, throwable.getMessage())).build();
+	}
 }

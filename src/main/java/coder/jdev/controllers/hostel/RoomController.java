@@ -17,24 +17,24 @@ import java.util.List;
 @RequestMapping("rooms")
 public class RoomController implements HostelManagementExceptionHandler, ValidationExceptionHandler {
 
-    private final RoomService service;
+	private final RoomService service;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<RoomResponse> getRooms() {
-        return service.findAll();
-    }
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public List<RoomResponse> getRooms() {
+		return service.findAll();
+	}
 
-    @PostMapping("add")
-    @ResponseStatus(HttpStatus.CREATED)
-    public RoomResponse addRoom(@RequestBody @Valid RoomRequest request) {
-        return service.addRoom(request);
-    }
+	@PostMapping("add")
+	@ResponseStatus(HttpStatus.CREATED)
+	public RoomResponse addRoom(@RequestBody @Valid RoomRequest request) {
+		return service.addRoom(request);
+	}
 
-    @GetMapping("by-hostel")
-    @ResponseStatus(HttpStatus.OK)
-    public List<RoomResponse> getRoomsByHostelId(@RequestParam("id") long hostelId) {
-        return service.getRoomsByHostelId(hostelId);
-    }
+	@GetMapping("by-hostel")
+	@ResponseStatus(HttpStatus.OK)
+	public List<RoomResponse> getRoomsByHostelId(@RequestParam("id") long hostelId) {
+		return service.getRoomsByHostelId(hostelId);
+	}
 
 }

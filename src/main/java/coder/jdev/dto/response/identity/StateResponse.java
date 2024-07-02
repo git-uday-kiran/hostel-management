@@ -7,15 +7,17 @@ import lombok.Data;
 @Builder
 public class StateResponse {
 
-    private Long id;
+	private Long id;
 
-    private String name;
+	private String name;
 
-    private CountryResponse countryResponse;
+	private CountryResponse countryResponse;
 
-    private String countryCode;
+	private String countryCode;
 
-    private String fipsCode;
+	private String fipsCode;
 
-    private String type;
+	private String type;
 }
+
+

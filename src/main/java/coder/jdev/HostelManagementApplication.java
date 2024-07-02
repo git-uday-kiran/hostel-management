@@ -21,29 +21,29 @@ import javax.sql.DataSource;
 @EnableConfigurationProperties
 public class HostelManagementApplication {
 
-    public final DataSource dataSource;
-    public final HostelRepository hostelRepository;
-    public final CityRepository cityRepository;
-    public final RoomService roomService;
+	public final DataSource dataSource;
+	public final HostelRepository hostelRepository;
+	public final CityRepository cityRepository;
+	public final RoomService roomService;
 
-    public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(HostelManagementApplication.class, args);
-    }
+	public static void main(String[] args) {
+		ApplicationContext context = SpringApplication.run(HostelManagementApplication.class, args);
+	}
 
-    @EventListener(ApplicationStartedEvent.class)
-    public void loadSqlFiles() {
-        System.out.println("Loading SQL files.....");
-        ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+	@EventListener(ApplicationStartedEvent.class)
+	public void loadSqlFiles() {
+		System.out.println("Loading SQL files.....");
+		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
 
-        final String path = "/db/";
-        Resource college = new ClassPathResource(path + "college.sql");
-        Resource world = new ClassPathResource(path + "world.sql");
+		final String path = "/db/";
+		Resource college = new ClassPathResource(path + "college.sql");
+		Resource world = new ClassPathResource(path + "world.sql");
 
-        populator.addScript(college);
-        populator.addScript(world);
-        populator.execute(dataSource);
-        System.out.println("SQL files loaded");
-    }
+		populator.addScript(college);
+		populator.addScript(world);
+		populator.execute(dataSource);
+		System.out.println("SQL files loaded");
+	}
 
 }
 

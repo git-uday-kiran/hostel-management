@@ -10,9 +10,9 @@ import java.util.List;
 @Repository
 public interface FileRecordRepository extends JpaRepository<FileRecord, Long> {
 
-    List<FileRecord> findAllByUploadedDateTime(LocalDateTime dateTime);
+	List<FileRecord> findAllByUploadedDateTime(LocalDateTime dateTime);
 
-    List<FileRecord> findAllByUploadedDateTimeGreaterThanEqual(LocalDateTime dateTime);
+	List<FileRecord> findAllByUploadedDateTimeGreaterThanEqual(LocalDateTime dateTime);
 
-    List<FileRecord> findAllByUserId(long userId);
+	List<FileRecord> findAllByUserId(long userId);
 }

@@ -17,26 +17,21 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class UserRequest {
 
-    @NotNull
-    @NotBlank
-    private String username;
-
-    @Email
-    private String email;
-
-    @NotNull
-    @Pattern(regexp = "(\\+?(91)?\\s{0,2})\\d{10}", message = "doesn't seem to be a valid mobile number")
-    private String mobile;
-
-    @Valid
-    @NotNull
-    private AddressRequest addressRequest;
-
-    @Past
-    @NotNull
-    public LocalDate dateOfBirth;
-
-    @NotNull
-    private User.Gender gender;
+	@Past
+	@NotNull
+	public LocalDate dateOfBirth;
+	@NotNull
+	@NotBlank
+	private String username;
+	@Email
+	private String email;
+	@NotNull
+	@Pattern(regexp = "(\\+?(91)?\\s{0,2})\\d{10}", message = "doesn't seem to be a valid mobile number")
+	private String mobile;
+	@Valid
+	@NotNull
+	private AddressRequest addressRequest;
+	@NotNull
+	private User.Gender gender;
 
 }

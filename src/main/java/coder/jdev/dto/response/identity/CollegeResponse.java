@@ -7,16 +7,16 @@ import lombok.Data;
 @Builder
 public class CollegeResponse {
 
-    private Long id;
+	private Long id;
 
-    private String collegeName;
+	private String collegeName;
 
-    private String universityName;
+	private String universityName;
 
-    private String collegeType;
+	private String collegeType;
 
-    private String stateName;
+	private String stateName;
 
-    private String districtName;
+	private String districtName;
 
 }

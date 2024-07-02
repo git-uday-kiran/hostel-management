@@ -17,38 +17,38 @@ import java.util.List;
 @RequestMapping("hostels")
 public class HostelController implements HostelManagementExceptionHandler, ValidationExceptionHandler {
 
-    private final HostelService service;
+	private final HostelService service;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<HostelResponse> findAll() {
-        return service.findAll();
-    }
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public List<HostelResponse> findAll() {
+		return service.findAll();
+	}
 
-    @PostMapping("add")
-    @ResponseStatus(HttpStatus.CREATED)
-    public HostelResponse addHostel(@RequestBody @Valid HostelRequest request) {
-        return service.addHostel(request);
-    }
+	@PostMapping("add")
+	@ResponseStatus(HttpStatus.CREATED)
+	public HostelResponse addHostel(@RequestBody @Valid HostelRequest request) {
+		return service.addHostel(request);
+	}
 
 
-    @GetMapping("by-email")
-    @ResponseStatus(HttpStatus.OK)
-    public HostelResponse findByEmail(@RequestParam String email) {
-        return service.getHostelByEmail(email);
-    }
+	@GetMapping("by-email")
+	@ResponseStatus(HttpStatus.OK)
+	public HostelResponse findByEmail(@RequestParam String email) {
+		return service.getHostelByEmail(email);
+	}
 
-    @GetMapping("by-mobile")
-    @ResponseStatus(HttpStatus.OK)
-    public HostelResponse findByMobile(@RequestParam String mobile) {
-        return service.getHostelByMobile(mobile);
-    }
+	@GetMapping("by-mobile")
+	@ResponseStatus(HttpStatus.OK)
+	public HostelResponse findByMobile(@RequestParam String mobile) {
+		return service.getHostelByMobile(mobile);
+	}
 
-    @DeleteMapping("remove")
-    @ResponseStatus(HttpStatus.OK)
-    public void removeHostelById(@RequestParam("id") long hostelId) {
-        service.removeHostelById(hostelId);
-    }
+	@DeleteMapping("remove")
+	@ResponseStatus(HttpStatus.OK)
+	public void removeHostelById(@RequestParam("id") long hostelId) {
+		service.removeHostelById(hostelId);
+	}
 
 }
 

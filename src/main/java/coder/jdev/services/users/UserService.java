@@ -21,64 +21,64 @@ import static coder.jdev.utils.RequestValidators.validateUserRequest;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserRepository repository;
-    private final AddressService addressService;
+	private final UserRepository repository;
+	private final AddressService addressService;
 
-    public List<UserResponse> findAll() {
-        return toResponseList(repository.findAll());
-    }
+	public List<UserResponse> findAll() {
+		return toResponseList(repository.findAll());
+	}
 
-    public UserResponse findById(final long userId) throws UserException {
-        return responseOf(fetchById(userId));
-    }
+	public UserResponse findById(final long userId) throws UserException {
+		return responseOf(fetchById(userId));
+	}
 
-    public UserResponse findByEmail(final String email) throws UserException {
-        return responseOf(repository.findByEmail(email).orElseThrow(() -> new UserException("user with email: %s does not exist".formatted(email))));
-    }
+	public UserResponse findByEmail(final String email) throws UserException {
+		return responseOf(repository.findByEmail(email).orElseThrow(() -> new UserException("user with email: %s does not exist".formatted(email))));
+	}
 
-    public UserResponse findByMobile(final String mobile) throws UserException {
-        return responseOf(repository.findByMobile(mobile).orElseThrow(() -> new UserException("user with mobile: %s does not exist ".formatted(mobile))));
-    }
+	public UserResponse findByMobile(final String mobile) throws UserException {
+		return responseOf(repository.findByMobile(mobile).orElseThrow(() -> new UserException("user with mobile: %s does not exist ".formatted(mobile))));
+	}
 
-    public UserResponse addUser(UserRequest request) {
-        validateUserRequest(request, repository);
-        User user = modelOf(request);
-        repository.saveAndFlush(user);
-        log.info("User with id: {} is saved", user.getId());
-        return responseOf(user);
-    }
+	public UserResponse addUser(UserRequest request) {
+		validateUserRequest(request, repository);
+		User user = modelOf(request);
+		repository.saveAndFlush(user);
+		log.info("User with id: {} is saved", user.getId());
+		return responseOf(user);
+	}
 
-    public List<UserResponse> toResponseList(List<User> hostels) {
-        return hostels.stream()
-                .map(this::responseOf)
-                .toList();
-    }
+	public List<UserResponse> toResponseList(List<User> hostels) {
+		return hostels.stream()
+			.map(this::responseOf)
+			.toList();
+	}
 
-    public UserResponse responseOf(User user) {
-        return UserResponse.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .email(user.getEmail())
-                .mobile(user.getMobile())
-                .dateOfBirth(user.getDateOfBirth())
-                .gender(user.getGender())
-                .addressResponse(addressService.responseOf(user.getAddress()))
-                .build();
-    }
+	public UserResponse responseOf(User user) {
+		return UserResponse.builder()
+			.id(user.getId())
+			.username(user.getUsername())
+			.email(user.getEmail())
+			.mobile(user.getMobile())
+			.dateOfBirth(user.getDateOfBirth())
+			.gender(user.getGender())
+			.addressResponse(addressService.responseOf(user.getAddress()))
+			.build();
+	}
 
-    public User fetchById(final long userId) {
-        return repository.fetchById(userId);
-    }
+	public User fetchById(final long userId) {
+		return repository.fetchById(userId);
+	}
 
-    public User modelOf(UserRequest request) {
-        return User.builder()
-                .username(request.getUsername())
-                .email(request.getEmail())
-                .mobile(request.getMobile())
-                .address(addressService.modelOf(request.getAddressRequest()))
-                .dateOfBirth(request.getDateOfBirth())
-                .gender(request.getGender())
-                .build();
-    }
+	public User modelOf(UserRequest request) {
+		return User.builder()
+			.username(request.getUsername())
+			.email(request.getEmail())
+			.mobile(request.getMobile())
+			.address(addressService.modelOf(request.getAddressRequest()))
+			.dateOfBirth(request.getDateOfBirth())
+			.gender(request.getGender())
+			.build();
+	}
 
 }

@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 @Data
 public class FileRecordRequest {
 
-    private Long userId;
+	private Long userId;
 
-    private String fileName;
+	private String fileName;
 
-    private LocalDateTime uploadedDateTime;
+	private LocalDateTime uploadedDateTime;
 
-    private byte[] fileData;
+	private byte[] fileData;
 }

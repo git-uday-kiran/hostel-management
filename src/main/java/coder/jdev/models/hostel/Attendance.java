@@ -18,14 +18,14 @@ import java.util.List;
 @AllArgsConstructor
 public class Attendance {
 
-    @Id
-    @Temporal(TemporalType.DATE)
-    private LocalDate date;
+	@Id
+	@Temporal(TemporalType.DATE)
+	private LocalDate date;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Student> students;
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<Student> students;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Staff> staff;
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<Staff> staff;
 }
 

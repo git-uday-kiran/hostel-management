@@ -7,11 +7,11 @@ import lombok.Data;
 @Builder
 public class RoomResponse {
 
-    private Long id;
+	private Long id;
 
-    private String roomNo;
+	private String roomNo;
 
-    private int floorNo;
+	private int floorNo;
 
 //    private HostelResponse hostelResponse;
 

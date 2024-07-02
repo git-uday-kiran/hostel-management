@@ -17,20 +17,20 @@ import java.util.List;
 @RequestMapping("cities")
 public class CityController implements HostelManagementExceptionHandler {
 
-    private final CityService service;
+	private final CityService service;
 
-    private final CityRepository repository;
+	private final CityRepository repository;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<CityResponse> getAllCities(Pageable pageable) {
-        return service.findAll(pageable);
-    }
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public List<CityResponse> getAllCities(Pageable pageable) {
+		return service.findAll(pageable);
+	}
 
-    @GetMapping("find")
-    @ResponseStatus(HttpStatus.OK)
-    public List<TemplateResponse> getCitiesByName(@RequestParam String name, Pageable pageable) {
-        return service.getCitiesByName(name, pageable);
-    }
+	@GetMapping("find")
+	@ResponseStatus(HttpStatus.OK)
+	public List<TemplateResponse> getCitiesByName(@RequestParam String name, Pageable pageable) {
+		return service.getCitiesByName(name, pageable);
+	}
 
 }

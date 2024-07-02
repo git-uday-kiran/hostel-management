@@ -15,22 +15,22 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class FileRecord {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @ManyToOne
-    private User user;
+	@ManyToOne
+	private User user;
 
-    @Column(length = 50, nullable = false)
-    private String fileName;
+	@Column(length = 50, nullable = false)
+	private String fileName;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime uploadedDateTime;
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private LocalDateTime uploadedDateTime;
 
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @Column(nullable = false)
-    private byte[] fileData;
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
+	@Column(nullable = false)
+	private byte[] fileData;
 }

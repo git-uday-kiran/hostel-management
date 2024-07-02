@@ -17,18 +17,18 @@ import java.util.List;
 @RequestMapping("students")
 public class StudentController implements HostelManagementExceptionHandler, ValidationExceptionHandler {
 
-    private final StudentService service;
+	private final StudentService service;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<StudentResponse> getStudents() {
-        return service.findAll();
-    }
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public List<StudentResponse> getStudents() {
+		return service.findAll();
+	}
 
-    @PostMapping("add")
-    @ResponseStatus(HttpStatus.CREATED)
-    public StudentResponse addStudent(@RequestBody @Valid StudentRequest request) {
-        return service.addStudent(request);
-    }
+	@PostMapping("add")
+	@ResponseStatus(HttpStatus.CREATED)
+	public StudentResponse addStudent(@RequestBody @Valid StudentRequest request) {
+		return service.addStudent(request);
+	}
 
 }

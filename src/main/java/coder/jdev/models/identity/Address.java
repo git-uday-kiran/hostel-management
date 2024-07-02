@@ -16,24 +16,24 @@ import lombok.NoArgsConstructor;
 //)
 public class Address {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(length = 255)
-    private String address;
+	@Column(length = 255)
+	private String address;
 
-    @Column(length = 45)
-    private String district;
+	@Column(length = 45)
+	private String district;
 
-    @ManyToOne
-    private City city;
+	@ManyToOne
+	private City city;
 
-    @ManyToOne
-    private State state;
+	@ManyToOne
+	private State state;
 
-    @ManyToOne
-    private Country country;
+	@ManyToOne
+	private Country country;
 
-    private Integer pincode;
+	private Integer pincode;
 }

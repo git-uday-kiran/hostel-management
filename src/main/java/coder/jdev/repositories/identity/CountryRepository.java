@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Long> {
 
-    List<Country> findAllByNameLikeIgnoreCase(final String regex, final Pageable pageable);
+	List<Country> findAllByNameLikeIgnoreCase(final String regex, final Pageable pageable);
 
 }

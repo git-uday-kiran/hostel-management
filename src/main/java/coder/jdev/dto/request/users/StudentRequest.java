@@ -15,21 +15,21 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class StudentRequest {
 
-    @NotNull
-    @Positive
-    private Long userId;
+	@NotNull
+	@Positive
+	private Long userId;
 
-    @NotNull
-    @Positive
-    private Long roomId;
+	@NotNull
+	@Positive
+	private Long roomId;
 
-    @NotNull
-    @Positive
-    private Long collegeId;
+	@NotNull
+	@Positive
+	private Long collegeId;
 
-    @NotNull
-    private LocalDate joiningDate;
+	@NotNull
+	private LocalDate joiningDate;
 
-    private LocalDate leaveDate;
+	private LocalDate leaveDate;
 
 }

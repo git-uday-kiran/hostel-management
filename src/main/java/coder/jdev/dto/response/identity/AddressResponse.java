@@ -7,14 +7,14 @@ import lombok.Data;
 @Builder
 public class AddressResponse {
 
-    private Long id;
+	private Long id;
 
-    private String address;
+	private String address;
 
-    private String district;
+	private String district;
 
-    private CityResponse cityResponse;
+	private CityResponse cityResponse;
 
-    private Integer pincode;
+	private Integer pincode;
 
 }

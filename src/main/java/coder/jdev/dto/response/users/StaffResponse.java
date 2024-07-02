@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class StaffResponse {
-    private Staff.Role role;
-    private Double salary;
-    private LocalDate joiningDate;
-    private LocalDate leaveDate;
-    private LocalDateTime lastUpdated;
+	private Staff.Role role;
+	private Double salary;
+	private LocalDate joiningDate;
+	private LocalDate leaveDate;
+	private LocalDateTime lastUpdated;
 }
