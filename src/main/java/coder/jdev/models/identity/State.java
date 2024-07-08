@@ -1,39 +1,30 @@
 package coder.jdev.models.identity;
 
+import coder.jdev.models.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "states")
 //@Subselect("select * from states")
-public class State {
+public class State extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@Column(length = 255)
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name = "country_id")
 	private Country country;
 
 	@Column(length = 2)
 	private String countryCode;
 
-	@Column(length = 255)
 	private String fipsCode;
 
-	@Column(length = 255)
 	private String iso2;
 
 	@Column(length = 191)
@@ -56,18 +47,12 @@ public class State {
 	@Column
 	private Byte flag;
 
-	@Column(length = 255)
 	private String wikiDataId;
 
-	@PrePersist
-	protected void onCreate() {
-		updatedAt = LocalDateTime.now();
+	@Override
+	public void prePersist() {
+		super.prePersist();
 		flag = 1;
-	}
-
-	@PreUpdate
-	protected void onUpdate() {
-		updatedAt = LocalDateTime.now();
 	}
 
 }

@@ -1,12 +1,11 @@
 package coder.jdev.models.identity;
 
+import coder.jdev.models.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -14,24 +13,22 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity(name = "cities")
 //@Subselect("select * from cities")
-public class City {
+public class City extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(length = 255, nullable = false)
+	@Column(nullable = false)
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name = "state_id")
 	private State state;
 
 	@Column(nullable = false)
 	private String stateCode;
 
 	@ManyToOne
-	@JoinColumn
 	private Country country;
 
 	@Column(nullable = false)
@@ -43,28 +40,15 @@ public class City {
 	@Column(nullable = false)
 	private Double longitude;
 
-	@Column(nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private LocalDateTime createdAt;
-
-	@Column(nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private LocalDateTime updatedAt;
-
 	@Column
 	private Byte flag;
 
-	@Column(length = 255)
 	private String wikiDataId;
 
-	@PrePersist
-	protected void onCreate() {
-		updatedAt = LocalDateTime.now();
+	@Override
+	public void prePersist() {
+		super.prePersist();
 		flag = 1;
 	}
 
-	@PreUpdate
-	protected void onUpdate() {
-		updatedAt = LocalDateTime.now();
-	}
 }

@@ -1,43 +1,45 @@
 package coder.jdev.models.users;
 
+import coder.jdev.models.BaseEntity;
 import coder.jdev.models.identity.Address;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@Data
+
 @Entity
-@SuperBuilder
+@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+@EqualsAndHashCode(callSuper = true)
+public class User extends BaseEntity {
 
-	@Column(nullable = true)
+	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	public LocalDate dateOfBirth;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Long id;
+
+	@Pattern(regexp = "[\\w\\.]{0,30}", message = "username is not valid, only allowed small letters and dot's")
 	@Column(length = 30, nullable = false, unique = true)
 	protected String username;
-	@Column(length = 50, nullable = false, unique = true)
+
+	@Email
+	@Column(length = 100, unique = true, nullable = false)
 	protected String email;
-	@Column(nullable = false, unique = true, updatable = true)
+
+	@Column(nullable = false)
+	@Pattern(regexp = "(\\+91|91)?\\d{10}", message = "doesn't seem to be a valid mobile number")
 	protected String mobile;
+
 	@JoinColumn
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	protected Address address;
+
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	protected Gender gender;
-
-	public enum Gender {
-		MALE, FEMALE
-	}
 
 }

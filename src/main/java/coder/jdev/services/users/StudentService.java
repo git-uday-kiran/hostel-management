@@ -37,6 +37,7 @@ public class StudentService {
 	private final RoomService roomService;
 	private final CollegeService collegeService;
 	private final AddressService addressService;
+	private final StudentRepository studentRepository;
 
 	public List<Student> findAllByJoiningDate(LocalDate date) {
 		return repository.findAllByJoiningDate(date);
@@ -62,7 +63,7 @@ public class StudentService {
 		validateStudentRequest(request, repository, userRepository);
 		final Student student = modelOf(request);
 		repository.saveAndFlush(student);
-		log.info("Student with id: {} is saved.", student.getUser().getId());
+		log.info("Student with id: {} is saved.", student.getId());
 		return responseOf(student);
 	}
 
@@ -73,13 +74,13 @@ public class StudentService {
 	}
 
 	public StudentResponse responseOf(final Student student) {
-		final User user = userRepository.findById(student.getUser().getId()).orElseThrow(userIsNotExistWithIdSupplier(student.getUser().getId()));
+		final User user = userRepository.findById(student.getId()).orElseThrow(userIsNotExistWithIdSupplier(student.getId()));
 		final AddressResponse addressResponse = addressService.responseOf(user.getAddress());
 		final RoomResponse roomResponse = roomService.responseOf(student.getRoom());
 		final CollegeResponse collegeResponse = collegeService.responseOf(student.getCollege());
 
 		return StudentResponse.builder()
-			.id(student.getUser().getId())
+			.id(student.getId())
 			.username(user.getUsername())
 			.email(user.getEmail())
 			.mobile(user.getMobile())
@@ -94,11 +95,11 @@ public class StudentService {
 	}
 
 	public Student modelOf(StudentRequest request) {
-		final User user = userRepository.fetchById(request.getUserId());
+		User user = userRepository.fetchById(request.getUserId());
+		final Student student = new Student();
 		final Room room = roomService.fetchById(request.getRoomId());
 		final College college = collegeService.fetchById(request.getCollegeId());
-		Student student = new Student();
-		student.setUser(user);
+		student.setId(user.getId());
 		student.setRoom(room);
 		student.setCollege(college);
 		student.setJoiningDate(request.getJoiningDate());

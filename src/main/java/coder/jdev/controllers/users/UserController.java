@@ -2,12 +2,9 @@ package coder.jdev.controllers.users;
 
 import coder.jdev.dto.request.users.UserRequest;
 import coder.jdev.dto.response.users.UserResponse;
-import coder.jdev.exceptions.handlers.HostelManagementExceptionHandler;
-import coder.jdev.exceptions.handlers.ValidationExceptionHandler;
 import coder.jdev.services.users.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,19 +12,33 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("users")
-public class UserController implements HostelManagementExceptionHandler, ValidationExceptionHandler {
+public class UserController {
 
 	private final UserService service;
 
 	@GetMapping
-	@ResponseStatus(HttpStatus.OK)
 	public List<UserResponse> getUsers() {
 		return service.findAll();
 	}
 
-	@PostMapping("add")
-	@ResponseStatus(HttpStatus.CREATED)
-	public UserResponse addUser(@RequestBody @Valid UserRequest request) {
+	@GetMapping("{id}")
+	public UserResponse getUser(@PathVariable Long id) {
+		return service.getUserResponseById(id);
+	}
+
+	@GetMapping("by-email/{email}")
+	public UserResponse getUserByEmail(@PathVariable String email) {
+		return service.getUserResponseByEmail(email);
+	}
+
+
+	@GetMapping("by-mobile/{mobile}")
+	public UserResponse getUserByMobile(@PathVariable String mobile) {
+		return service.getUserResponseByMobile(mobile);
+	}
+
+	@PostMapping
+	public Long addUser(@RequestBody @Valid UserRequest request) {
 		return service.addUser(request);
 	}
 

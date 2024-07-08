@@ -48,7 +48,9 @@ public class AddressService {
 			.id(address.getId())
 			.address(address.getAddress())
 			.district(address.getDistrict())
-			.cityResponse(cityService.responseOf(address.getCity()))
+			.city(address.getCity().getName())
+			.state(address.getState().getName())
+			.country(address.getCountry().getName())
 			.pincode(address.getPincode())
 			.build();
 	}

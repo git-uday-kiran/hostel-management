@@ -1,12 +1,14 @@
 package coder.jdev.dto.request.users;
 
 import coder.jdev.dto.request.identity.AddressRequest;
-import coder.jdev.models.users.User;
+import coder.jdev.models.users.Gender;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDate;
@@ -17,21 +19,28 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class UserRequest {
 
-	@Past
 	@NotNull
+	@Past(message = "data of birth should be past")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	public LocalDate dateOfBirth;
+
 	@NotNull
 	@NotBlank
 	private String username;
+
 	@Email
 	private String email;
+
 	@NotNull
-	@Pattern(regexp = "(\\+?(91)?\\s{0,2})\\d{10}", message = "doesn't seem to be a valid mobile number")
+	@Pattern(regexp = "(\\+91|91)?\\d{10}", message = "doesn't seem to be a valid mobile number")
 	private String mobile;
+
 	@Valid
 	@NotNull
-	private AddressRequest addressRequest;
+	@JsonProperty("address")
+	private AddressRequest address;
+
 	@NotNull
-	private User.Gender gender;
+	private Gender gender;
 
 }

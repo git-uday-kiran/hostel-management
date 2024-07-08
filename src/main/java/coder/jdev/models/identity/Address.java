@@ -1,26 +1,20 @@
 package coder.jdev.models.identity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import coder.jdev.models.BaseEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Pattern;
+import lombok.*;
 
-@Data
 @Entity
+@Setter
+@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-//@Table(uniqueConstraints =
-//        {@UniqueConstraint(name = "addressUniqueConstraints", columnNames = {"address", "district", "city_id", "state_id", "country_id", "pincode"})}
-//)
-public class Address {
+public class Address extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@Column(length = 255)
 	private String address;
 
 	@Column(length = 45)
@@ -35,5 +29,8 @@ public class Address {
 	@ManyToOne
 	private Country country;
 
-	private Integer pincode;
+	@Column(nullable = false)
+	@Pattern(regexp = "\\d{6}", message = "pincode should be six digits")
+	private String pincode;
+
 }

@@ -1,5 +1,6 @@
 package coder.jdev.dto.request.identity;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,10 +27,8 @@ public class AddressRequest {
 	private Long cityId;
 
 	@NotNull
-	@Min(value = 100000, message = "pin-code must be six digits")
-	@Max(value = 999999, message = "pin-code must be six digits")
-	private int pincode;
-
+	@Pattern(regexp = "\\d{6}", message = "pincode should be six digits")
+	private String pincode;
 }
 
 

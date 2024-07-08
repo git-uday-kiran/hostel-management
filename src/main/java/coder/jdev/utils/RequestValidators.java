@@ -4,11 +4,9 @@ import coder.jdev.dto.request.hostel.HostelRequest;
 import coder.jdev.dto.request.hostel.RoomRequest;
 import coder.jdev.dto.request.users.StaffRequest;
 import coder.jdev.dto.request.users.StudentRequest;
-import coder.jdev.dto.request.users.UserRequest;
 import coder.jdev.exceptions.hostel.HostelException;
 import coder.jdev.exceptions.users.StaffException;
 import coder.jdev.exceptions.users.StudentException;
-import coder.jdev.exceptions.users.UserException;
 import coder.jdev.repositories.hostel.HostelRepository;
 import coder.jdev.repositories.hostel.RoomRepository;
 import coder.jdev.repositories.users.StaffRepository;
@@ -24,19 +22,6 @@ import static coder.jdev.utils.Utils.*;
 @UtilityClass
 public final class RequestValidators {
 	private static final int MAX_ROOMS = 10;
-
-	public static void validateUserRequest(final UserRequest request, final UserRepository repository) {
-		final List<String> failList = new ArrayList<>();
-
-		if (repository.existsByUsername(request.getUsername())) failList.add("username");
-		if (repository.existsByEmail(request.getEmail())) failList.add("email");
-		if (repository.existsByMobile(request.getMobile())) failList.add("mobile");
-
-		if (not(failList.isEmpty())) {
-			final String message = String.join(", ", failList) + (failList.size() == 1 ? " is " : " are ") + "already taken.";
-			throwException(message, UserException.class);
-		}
-	}
 
 	public static void validateHostelRequest(final HostelRequest request, final HostelRepository repository) {
 		final List<String> failList = new ArrayList<>();

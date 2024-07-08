@@ -8,8 +8,7 @@ import coder.jdev.dto.request.users.UserRequest;
 import coder.jdev.dto.response.hostel.HostelResponse;
 import coder.jdev.dto.response.hostel.RoomResponse;
 import coder.jdev.dto.response.users.StudentResponse;
-import coder.jdev.dto.response.users.UserResponse;
-import coder.jdev.models.users.User;
+import coder.jdev.models.users.Gender;
 import coder.jdev.services.hostel.HostelService;
 import coder.jdev.services.hostel.RoomService;
 import coder.jdev.services.users.StudentService;
@@ -52,7 +51,7 @@ public class FakeDataLoader implements CommandLineRunner {
 		var hostels = loadHostels();
 		var users = addUsers();
 		var rooms = addRooms(hostels);
-		var students = addStudents(users, rooms);
+//		var students = addStudents(users, rooms);
 	}
 
 	public List<Long> loadHostels() {
@@ -81,7 +80,6 @@ public class FakeDataLoader implements CommandLineRunner {
 				gender()
 			))
 			.map(userService::addUser)
-			.map(UserResponse::getId)
 			.toList();
 	}
 
@@ -115,7 +113,7 @@ public class FakeDataLoader implements CommandLineRunner {
 	}
 
 	private String mobile() {
-		return phoneNumber.subscriberNumber(10);
+		return "+91" + phoneNumber.subscriberNumber(10);
 	}
 
 	private String email() {
@@ -127,12 +125,12 @@ public class FakeDataLoader implements CommandLineRunner {
 			address.fullAddress(),
 			address.city(),
 			random.nextLong(100, 200),
-			address.zipCode().replaceAll("\\D", "").transform(Integer::valueOf)
+			"123456"
 		);
 	}
 
-	private User.Gender gender() {
-		return User.Gender.values()[(int) (Math.random() * 1)];
+	private Gender gender() {
+		return Gender.values()[(int) (Math.random() * 1)];
 	}
 
 	private LocalDate localDate(Date date) {

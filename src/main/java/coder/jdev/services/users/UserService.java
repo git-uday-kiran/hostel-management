@@ -2,6 +2,7 @@ package coder.jdev.services.users;
 
 import coder.jdev.dto.request.users.UserRequest;
 import coder.jdev.dto.response.users.UserResponse;
+import coder.jdev.exceptions.UserNotFound;
 import coder.jdev.exceptions.users.UserException;
 import coder.jdev.models.users.User;
 import coder.jdev.repositories.users.UserRepository;
@@ -12,8 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
-import static coder.jdev.utils.RequestValidators.validateUserRequest;
 
 @Log4j2
 @Service
@@ -28,30 +30,45 @@ public class UserService {
 		return toResponseList(repository.findAll());
 	}
 
-	public UserResponse findById(final long userId) throws UserException {
-		return responseOf(fetchById(userId));
+	public User getUserById(long userId) {
+		Optional<User> byId = repository.findById(userId);
+		return byId.orElseThrow(() -> new UserNotFound("could not find user with id %d".formatted(userId)));
 	}
 
-	public UserResponse findByEmail(final String email) throws UserException {
-		return responseOf(repository.findByEmail(email).orElseThrow(() -> new UserException("user with email: %s does not exist".formatted(email))));
+	public User getUserById(String email) {
+		Objects.requireNonNull(email, "email can not be null");
+		Optional<User> byEmail = repository.findByEmail(email);
+		return byEmail.orElseThrow(() -> new UserNotFound("could not find user with email %s".formatted(email)));
 	}
 
-	public UserResponse findByMobile(final String mobile) throws UserException {
-		return responseOf(repository.findByMobile(mobile).orElseThrow(() -> new UserException("user with mobile: %s does not exist ".formatted(mobile))));
+	public User getUserByMobile(String mobile) {
+		Objects.requireNonNull(mobile, "mobile can not be null");
+		Optional<User> byEmail = repository.findByMobile(mobile);
+		return byEmail.orElseThrow(() -> new UserNotFound("could not find user with mobile %s".formatted(mobile)));
 	}
 
-	public UserResponse addUser(UserRequest request) {
-		validateUserRequest(request, repository);
+	public UserResponse getUserResponseById(long userId) {
+		return responseOf(getUserById(userId));
+	}
+
+	public UserResponse getUserResponseByEmail(final String email) throws UserException {
+		return responseOf(getUserById(email));
+	}
+
+	public UserResponse getUserResponseByMobile(final String mobile) throws UserException {
+		return responseOf(getUserByMobile(mobile));
+	}
+
+	public Long addUser(UserRequest request) {
+		log.info("adding user {}", request);
 		User user = modelOf(request);
 		repository.saveAndFlush(user);
 		log.info("User with id: {} is saved", user.getId());
-		return responseOf(user);
+		return user.getId();
 	}
 
 	public List<UserResponse> toResponseList(List<User> hostels) {
-		return hostels.stream()
-			.map(this::responseOf)
-			.toList();
+		return hostels.stream().map(this::responseOf).toList();
 	}
 
 	public UserResponse responseOf(User user) {
@@ -66,16 +83,12 @@ public class UserService {
 			.build();
 	}
 
-	public User fetchById(final long userId) {
-		return repository.fetchById(userId);
-	}
-
 	public User modelOf(UserRequest request) {
 		return User.builder()
 			.username(request.getUsername())
 			.email(request.getEmail())
 			.mobile(request.getMobile())
-			.address(addressService.modelOf(request.getAddressRequest()))
+			.address(addressService.modelOf(request.getAddress()))
 			.dateOfBirth(request.getDateOfBirth())
 			.gender(request.getGender())
 			.build();

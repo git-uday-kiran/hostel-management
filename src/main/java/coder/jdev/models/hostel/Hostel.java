@@ -1,39 +1,29 @@
 package coder.jdev.models.hostel;
 
+import coder.jdev.models.BaseEntity;
 import coder.jdev.models.identity.Address;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Data
+@Setter
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(uniqueConstraints = {
-	@UniqueConstraint(columnNames = {
-		"id", "email"
-	})
-})
-public class Hostel {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class Hostel extends BaseEntity {
 
 	@Size(min = 5, max = 50, message = "hostel name must be in the range of 5 to 50")
-	@Column(length = 255, nullable = false, unique = true)
+	@Column(nullable = false, unique = true)
 	private String name;
 
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(nullable = false)
 	private Address address;
 
 	@Email
@@ -41,11 +31,11 @@ public class Hostel {
 	private String email;
 
 	@Column(nullable = false)
-	@Pattern(regexp = "(\\+?(91)?\\s{0,2})\\d{10}", message = "doesn't seem to be a valid mobile number")
+	@Pattern(regexp = "(\\+91|91)\\d{10}", message = "doesn't seem to be a valid mobile number")
 	private String mobile;
 
-	@OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Room> rooms = new HashSet<>();
+	@OneToMany(mappedBy = "hostel")
+	private List<Room> rooms;
 
 }
 

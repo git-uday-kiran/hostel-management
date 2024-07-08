@@ -3,6 +3,7 @@ package coder.jdev.dto.response.users;
 import coder.jdev.dto.response.hostel.RoomResponse;
 import coder.jdev.dto.response.identity.AddressResponse;
 import coder.jdev.dto.response.identity.CollegeResponse;
+import coder.jdev.models.users.Gender;
 import coder.jdev.models.users.User;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +21,7 @@ public class StudentResponse {
 	private String email;
 	private String mobile;
 	private AddressResponse addressResponse;
-	private User.Gender gender;
+	private Gender gender;
 
 	private RoomResponse roomResponse;
 

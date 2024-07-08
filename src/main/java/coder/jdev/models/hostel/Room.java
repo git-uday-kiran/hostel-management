@@ -1,6 +1,10 @@
 package coder.jdev.models.hostel;
 
-import jakarta.persistence.*;
+import coder.jdev.models.BaseEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 @Entity
@@ -9,25 +13,16 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(
-	uniqueConstraints =
-	@UniqueConstraint(name = "room_floor_hostel",
-		columnNames = {"room_no", "floor_no", "hostel_id"}
-	))
-public class Room {
+public class Room extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@Column(name = "room_no")
+	@Column(nullable = false)
 	private String roomNo;
 
-	@Column(scale = 99, name = "floor_no")
+	@Column(scale = 99)
 	private int floorNo;
 
+	@ManyToOne
 	@JoinColumn(nullable = false)
-	@ManyToOne(cascade = CascadeType.ALL)
 	private Hostel hostel;
 
 }

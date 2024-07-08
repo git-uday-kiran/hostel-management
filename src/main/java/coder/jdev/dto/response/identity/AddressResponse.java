@@ -13,8 +13,12 @@ public class AddressResponse {
 
 	private String district;
 
-	private CityResponse cityResponse;
+	private String city;
 
-	private Integer pincode;
+	private String state;
+
+	private String country;
+
+	private String pincode;
 
 }
