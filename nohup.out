@@ -1,0 +1,39 @@
+libpxbackend-1.0.so: cannot open shared object file: No such file or directory
+Failed to load module: /home/uday-kiran/snap/telegram-desktop/common/.cache/gio-modules/libgiolibproxy.so
+
+(telegram-desktop:621058): Gtk-WARNING **: 20:00:33.798: Failed to parse /etc/xdg/gtk-3.0/settings.ini: Permission denied
+libpxbackend-1.0.so: cannot open shared object file: No such file or directory
+Failed to load module: /home/uday-kiran/snap/telegram-desktop/common/.cache/gio-modules/libgiolibproxy.so
+Qt: Session management error: Authentication Rejected, reason : None of the authentication protocols specified are supported and host-based authentication failed
+[ALSOFT] (EE) Failed to connect PipeWire event context (errno: 112)
+QPainter::begin: Paint device returned engine == 0, type: 2
+QWidget::render: Cannot render with an inactive painter
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+qt.svg: Error while inflating gzip file: SVG format check failed
+[libvpx-vp9 @ 0x7fb92840a800] v1.14.0
+[libvpx-vp9 @ 0x7fb909aee400] v1.14.0
+[libvpx-vp9 @ 0x7fb909aee400] v1.14.0
+[libvpx-vp9 @ 0x7fb92840a800] v1.14.0
+[libvpx-vp9 @ 0x7fb93503a400] v1.14.0
+[libvpx-vp9 @ 0x7fb93503a400] v1.14.0
+[libvpx-vp9 @ 0x7fb930ae5c00] v1.14.0
+[libvpx-vp9 @ 0x7fb930ae5c00] v1.14.0
+[libvpx-vp9 @ 0x7fb94652d400] v1.14.0
+[libvpx-vp9 @ 0x7fb94652d400] v1.14.0
+[libvpx-vp9 @ 0x7fb92a283400] v1.14.0
+[libvpx-vp9 @ 0x7fb92a283400] v1.14.0
+[libvpx-vp9 @ 0x7fb93b601800] v1.14.0
+[libvpx-vp9 @ 0x7fb93b601800] v1.14.0
+[libvpx-vp9 @ 0x7fb92840b000] v1.14.0
+[libvpx-vp9 @ 0x7fb92840b000] v1.14.0
+qt.gui.imageio.jpeg: ./lib/jpegli/decode_scan.cc:535: Incomplete scan detected.
