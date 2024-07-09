@@ -9,7 +9,7 @@ public class CountryResponse {
 
 	private Long id;
 
-	private String name;
+	private String countryName;
 
 	private String phoneCode;
 
@@ -17,5 +17,7 @@ public class CountryResponse {
 
 	private String currencyName;
 
-	private String emoji;
+	private String currencySymbol;
+
+	private String countryEmoji;
 }

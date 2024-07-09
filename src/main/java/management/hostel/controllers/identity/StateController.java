@@ -1,9 +1,9 @@
 package management.hostel.controllers.identity;
 
-import management.hostel.dto.response.TemplateResponse;
+import lombok.RequiredArgsConstructor;
 import management.hostel.dto.response.identity.StateResponse;
 import management.hostel.services.identity.StateService;
-import lombok.RequiredArgsConstructor;
+import management.hostel.utils.MapResponse;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +23,16 @@ public class StateController {
 		return service.findAll(pageable);
 	}
 
-	@GetMapping("find")
+	@GetMapping("/{stateId}")
 	@ResponseStatus(HttpStatus.OK)
-	public List<TemplateResponse> getStatesByName(@RequestParam String name, Pageable pageable) {
-		return service.getStatesByName(name, pageable);
+	public StateResponse getStateById(@PathVariable long stateId, Pageable pageable) {
+		return service.getStateById(stateId, pageable);
+	}
+
+	@GetMapping("/name/{stateName}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<MapResponse> getStatesByName(@PathVariable String stateName, Pageable pageable) {
+		return service.getStatesByName(stateName, pageable);
 	}
 
 }

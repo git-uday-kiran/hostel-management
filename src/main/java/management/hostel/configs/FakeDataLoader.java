@@ -1,5 +1,11 @@
 package management.hostel.configs;
 
+import com.github.javafaker.Address;
+import com.github.javafaker.Faker;
+import com.github.javafaker.Name;
+import com.github.javafaker.PhoneNumber;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import management.hostel.dto.request.hostel.HostelRequest;
 import management.hostel.dto.request.hostel.RoomRequest;
 import management.hostel.dto.request.identity.AddressRequest;
@@ -13,12 +19,6 @@ import management.hostel.services.hostel.HostelService;
 import management.hostel.services.hostel.RoomService;
 import management.hostel.services.users.StudentService;
 import management.hostel.services.users.UserService;
-import com.github.javafaker.Address;
-import com.github.javafaker.Faker;
-import com.github.javafaker.Name;
-import com.github.javafaker.PhoneNumber;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

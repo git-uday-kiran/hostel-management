@@ -11,13 +11,18 @@ public class StateResponse {
 
 	private String name;
 
-	private CountryResponse countryResponse;
-
 	private String countryCode;
 
-	private String fipsCode;
+	private String countryName;
 
-	private String type;
+	private String capital;
+
+	private String phoneCode;
+
+	private String currencyName;
+
+	private String countryEmoji;
+
 }
 
 

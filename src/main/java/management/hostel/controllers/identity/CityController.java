@@ -1,14 +1,14 @@
 package management.hostel.controllers.identity;
 
-import management.hostel.dto.response.TemplateResponse;
+import lombok.RequiredArgsConstructor;
 import management.hostel.dto.response.identity.CityResponse;
 import management.hostel.exceptions.handlers.HostelManagementExceptionHandler;
-import management.hostel.repositories.identity.CityRepository;
 import management.hostel.services.identity.CityService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -19,18 +19,24 @@ public class CityController implements HostelManagementExceptionHandler {
 
 	private final CityService service;
 
-	private final CityRepository repository;
-
 	@GetMapping
-	@ResponseStatus(HttpStatus.OK)
 	public List<CityResponse> getAllCities(Pageable pageable) {
 		return service.findAll(pageable);
 	}
 
-	@GetMapping("find")
-	@ResponseStatus(HttpStatus.OK)
-	public List<TemplateResponse> getCitiesByName(@RequestParam String name, Pageable pageable) {
-		return service.getCitiesByName(name, pageable);
+	@GetMapping("/{cityId}")
+	public CityResponse getCityById(@PathVariable Long cityId) {
+		return service.getCityResponseById(cityId);
+	}
+
+	@GetMapping("/name/{cityName}")
+	public List<?> getCitiesByName(@PathVariable String cityName, Pageable pageable) {
+		return service.getCitiesByName(cityName, pageable);
+	}
+
+	@GetMapping("/state/{stateId}")
+	public List<?> getCitiesByState(@PathVariable long stateId, Pageable pageable) {
+		return service.getCitiesByStateId(stateId);
 	}
 
 }

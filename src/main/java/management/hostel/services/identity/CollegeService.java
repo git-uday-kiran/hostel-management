@@ -1,12 +1,12 @@
 package management.hostel.services.identity;
 
-import management.hostel.dto.response.TemplateResponse;
+import lombok.RequiredArgsConstructor;
 import management.hostel.dto.response.identity.CollegeResponse;
-import management.hostel.exceptions.identity.CollegeException;
+import management.hostel.exceptions.ResourceNotfoundException;
 import management.hostel.exceptions.identity.CountryException;
 import management.hostel.models.identity.College;
 import management.hostel.repositories.identity.CollegeRepository;
-import lombok.RequiredArgsConstructor;
+import management.hostel.utils.MapResponse;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -18,22 +18,28 @@ public class CollegeService {
 
 	private final CollegeRepository repository;
 
-	public College findById(long id) throws CountryException {
-		return repository.findById(id).orElseThrow(() -> new CollegeException("College with id: %d does not exist.".formatted(id)));
+	public College getCollegeById(long id) throws CountryException {
+		return repository.findById(id).orElseThrow(() -> new ResourceNotfoundException("College does not exist with id %d".formatted(id)));
+	}
+
+	public CollegeResponse getCollegeResponseById(long id) {
+		return responseOf(getCollegeById(id));
 	}
 
 	public List<CollegeResponse> findAll(Pageable pageable) {
 		return toResponseList(repository.findAll(pageable).toList());
 	}
 
-	public List<TemplateResponse> getCollegesByName(final String collegeName, final Pageable pageable) {
+	public List<MapResponse> getCollegesByName(final String collegeName, final Pageable pageable) {
 		List<College> colleges = repository.findAllByCollegeNameLikeIgnoreCase("%" + collegeName + "%", pageable);
 		return colleges.stream()
-			.map(college -> TemplateResponse.builder()
-				.id(college.getId())
-				.name(college.getCollegeName())
-				.district(college.getDistrictName())
-				.build())
+			.map(college -> MapResponse.create()
+				.set("id", college.getId())
+				.set("name", college.getCollegeName())
+				.set("district", college.getDistrictName())
+				.set("state", college.getStateName())
+				.set("university", college.getUniversityName())
+				.set("college_type", college.getCollegeType()))
 			.toList();
 	}
 

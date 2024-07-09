@@ -1,11 +1,13 @@
 package management.hostel.services.identity;
 
-import management.hostel.dto.response.TemplateResponse;
+import lombok.RequiredArgsConstructor;
 import management.hostel.dto.response.identity.StateResponse;
+import management.hostel.exceptions.ResourceNotfoundException;
 import management.hostel.exceptions.identity.StateException;
+import management.hostel.models.identity.Country;
 import management.hostel.models.identity.State;
 import management.hostel.repositories.identity.StateRepository;
-import lombok.RequiredArgsConstructor;
+import management.hostel.utils.MapResponse;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -31,13 +33,12 @@ public class StateService {
 		return toResponseList(repository.findAll(pageable).toList());
 	}
 
-	public List<TemplateResponse> getStatesByName(final String stateName, final Pageable pageable) {
+	public List<MapResponse> getStatesByName(final String stateName, final Pageable pageable) {
 		List<State> states = repository.findAllByNameLikeIgnoreCase("%" + stateName + "%", pageable);
 		return states.stream()
-			.map(state -> TemplateResponse.builder()
-				.id(state.getId())
-				.name(state.getName())
-				.build())
+			.map(state -> MapResponse.create()
+				.set("id", state.getId())
+				.set("name", state.getName()))
 			.toList();
 	}
 
@@ -48,14 +49,21 @@ public class StateService {
 	}
 
 	public StateResponse responseOf(State state) {
+		Country country = state.getCountry();
 		return StateResponse.builder()
 			.id(state.getId())
 			.name(state.getName())
 			.countryCode(state.getCountryCode())
-			.fipsCode(state.getFipsCode())
-			.type(state.getType())
-			.countryResponse(countryService.responseOf(state.getCountry()))
+			.countryName(country.getName())
+			.capital(country.getCapital())
+			.phoneCode(country.getPhoneCode())
+			.countryEmoji(country.getEmoji())
+			.currencyName(country.getCurrencyName())
 			.build();
 	}
 
+	public StateResponse getStateById(long stateId, Pageable pageable) {
+		State state = repository.findById(stateId).orElseThrow(() -> new ResourceNotfoundException("State does not exist with id %d".formatted(stateId)));
+		return responseOf(state);
+	}
 }

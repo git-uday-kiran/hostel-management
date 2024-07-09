@@ -15,6 +15,16 @@ public class CityResponse {
 
 	private String countryCode;
 
-	private StateResponse stateResponse;
+	private String stateName;
+
+	private String countryName;
+
+	private String capital;
+
+	private String phoneCode;
+
+	private String currencyName;
+
+	private String countryEmoji;
 
 }
