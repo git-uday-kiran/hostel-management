@@ -1,0 +1,152 @@
+The disableGPU setting is set to undefined
+Not disabling GPU
+(node:455611) Warning: Accessing non-existent property 'cat' of module exports inside circular dependency
+(Use `postman --trace-warnings ...` to show where the warning was created)
+(node:455611) Warning: Accessing non-existent property 'cd' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'chmod' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'cp' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'dirs' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'pushd' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'popd' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'echo' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'tempdir' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'pwd' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'exec' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'ls' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'find' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'grep' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'head' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'ln' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'mkdir' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'rm' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'mv' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'sed' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'set' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'sort' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'tail' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'test' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'to' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'toEnd' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'touch' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'uniq' of module exports inside circular dependency
+(node:455611) Warning: Accessing non-existent property 'which' of module exports inside circular dependency
+
+(postman:455611): Gtk-WARNING **: 20:35:56.193: Failed to parse /etc/xdg/gtk-3.0/settings.ini: Permission denied
+Main: Starting cleanup of stale files
+[455772:0705/203556.617590:ERROR:angle_platform_impl.cc(43)] Display.cpp:992 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455772:0705/203556.617756:ERROR:gl_surface_egl.cc(831)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455772:0705/203556.617800:ERROR:gl_surface_egl.cc(1353)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[455772:0705/203556.617915:ERROR:angle_platform_impl.cc(43)] Display.cpp:992 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455772:0705/203556.617951:ERROR:gl_surface_egl.cc(831)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455772:0705/203556.617975:ERROR:gl_surface_egl.cc(1353)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[455772:0705/203556.617999:ERROR:gl_ozone_egl.cc(23)] GLSurfaceEGL::InitializeOneOff failed.
+Main: Cleanup of stale files completed
+Main~createDefaultWorkingDir - Default working dir creation already attempted
+[455772:0705/203556.650332:ERROR:viz_main_impl.cc(186)] Exiting GPU process due to errors during initialization
+1720191956655 main info "Booting Postman 11.2.0, linux-6.8.11-amd64 on x64"
+1720191956656 main info "EventBus~initialize - Success"
+1720191956691 main info "Proxy configuration has not been setup"
+1720191956691 main info "CloudProxyManager~init - Success"
+[455791:0705/203556.706666:ERROR:angle_platform_impl.cc(43)] Display.cpp:992 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455791:0705/203556.706872:ERROR:gl_surface_egl.cc(831)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455791:0705/203556.706917:ERROR:gl_surface_egl.cc(1353)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[455791:0705/203556.707087:ERROR:angle_platform_impl.cc(43)] Display.cpp:992 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455791:0705/203556.707140:ERROR:gl_surface_egl.cc(831)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455791:0705/203556.707175:ERROR:gl_surface_egl.cc(1353)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[455791:0705/203556.707211:ERROR:gl_ozone_egl.cc(23)] GLSurfaceEGL::InitializeOneOff failed.
+[455791:0705/203556.709811:ERROR:viz_main_impl.cc(186)] Exiting GPU process due to errors during initialization
+1720191956744 main info "performShellDataMigration: Migration has already been done. Bailing out"
+[455806:0705/203556.750993:ERROR:angle_platform_impl.cc(43)] Display.cpp:992 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455806:0705/203556.751114:ERROR:gl_surface_egl.cc(831)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455806:0705/203556.751147:ERROR:gl_surface_egl.cc(1353)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[455806:0705/203556.751244:ERROR:angle_platform_impl.cc(43)] Display.cpp:992 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455806:0705/203556.751277:ERROR:gl_surface_egl.cc(831)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455806:0705/203556.751302:ERROR:gl_surface_egl.cc(1353)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[455806:0705/203556.751327:ERROR:gl_ozone_egl.cc(23)] GLSurfaceEGL::InitializeOneOff failed.
+[455806:0705/203556.752369:ERROR:viz_main_impl.cc(186)] Exiting GPU process due to errors during initialization
+1720191956754 main info "UpdateHandler~init - Success"
+1720191956756 main info "LeaderSelection: Initialized successfully"
+1720191956757 main info "VersionDependencyService: Initialized successfully"
+1720191956771 main info "LinuxAutoUpdater~Cleanup - Initial cleanup successful"
+[455813:0705/203556.776962:ERROR:angle_platform_impl.cc(43)] Display.cpp:992 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455813:0705/203556.777072:ERROR:gl_surface_egl.cc(831)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455813:0705/203556.777102:ERROR:gl_surface_egl.cc(1353)] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+[455813:0705/203556.777199:ERROR:angle_platform_impl.cc(43)] Display.cpp:992 (initialize): ANGLE Display::initialize error 12289: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455813:0705/203556.777231:ERROR:gl_surface_egl.cc(831)] EGL Driver message (Critical) eglInitialize: Could not dlopen libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[455813:0705/203556.777256:ERROR:gl_surface_egl.cc(1353)] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[455813:0705/203556.777281:ERROR:gl_ozone_egl.cc(23)] GLSurfaceEGL::InitializeOneOff failed.
+[455813:0705/203556.778325:ERROR:viz_main_impl.cc(186)] Exiting GPU process due to errors during initialization
+1720191956792 main info "GPU detected VID 0 DID 0 ACTIVE false"
+1720191956794 main info "newAccountRegionPreferenceService~getPreferenceWithFallback - Preference not found in storage."
+1720191956794 main info "newAccountRegionPreferenceService~getToggleMenuTemplate - Using preference:","useUSRegion"
+1720191956811 main info "shellController~init: Success"
+1720191956815 main info "shellMeta~init: Success"
+1720191956815 main info "partitionMigrationService: State of V7 partition:"
+1720191956816 main info "partitionMigrationService: V7 partitions",[]
+1720191956816 main info "partitionMigrationService~rectifyNamespaceOfScratchPadPartition: There is no partition with scratchpad namespace"
+1720191956816 main info "partitionMigrationService~rectifyNamespaceOfScratchPadPartition: There is no transit partition which could have been used for scratchpad"
+1720191956816 main info "partitionMigrationService~init: Success"
+1720191956826 main info "partitionMigrationService~runV8PartitionsIntegrity: Two way migration~ removing the following partitions from v8",[]
+1720191956830 main info "userPartitionService~getRecentV8UserPartition: recent v8 user context partition ","feee5b2c-a434-4cd5-b98c-4fcf09e9d4d8"
+1720191956830 main info "userPartitionService~_rectifyTheActivePartitionOfApplication: Setting the active partition to ","feee5b2c-a434-4cd5-b98c-4fcf09e9d4d8"
+1720191956837 main info "userPartitionService~init: Success"
+1720191956854 main info "userPartitionService: State of v8 partition system:"
+1720191956856 main info "shell~init~getPartitionToLoad: loading active partition"
+1720191956862 main info "userPartitionService: List of partitions:",[{"partitionId":"feee5b2c-a434-4cd5-b98c-4fcf09e9d4d8","namespace":"users","userId":"22875427","teamId":"0","lastUpdated":"2024-06-22T10:44:25.906Z"},{"partitionId":"d4bf1f3d-c8a8-4f25-95dc-1d1167dce75b","namespace":"scratchPad","userId":0,"teamId":0,"isDirty":false}]
+1720191956862 main info "userPartitionService: users global meta:",{}
+1720191956865 main info "Main:windowManager~newRequesterWindow: Fetch and update runtime config: us"
+MESA-LOADER: failed to open iris (search paths /snap/postman/259/usr/lib/x86_64-linux-gnu/dri)
+failed to load driver: iris
+MESA-LOADER: failed to open kms_swrast (search paths /snap/postman/259/usr/lib/x86_64-linux-gnu/dri)
+failed to load driver: kms_swrast
+MESA-LOADER: failed to open swrast (search paths /snap/postman/259/usr/lib/x86_64-linux-gnu/dri)
+failed to load swrast driver
+1720191961362 main info "RuntimeIPCAgent~started: Success"
+1720191961652 main info "Main~getRemoteInitPath:: "
+INTERCEPTOR CONNECTIVITY: Connecting to Interceptor Bridge
+IPCClient ~ WindowHandler: New event is received { type: 'window-opened' }
+1720191961962 main info "windowManager: First requester booted successfully."
+1720191961963 main info "windowManager~restoreWindows: Restoring requester windows"
+1720191961964 main info "Main~AppEvents - Received booted event for process requester.Version 11.2.34 UI Version: 11.2.34-ui-240627-0757 Desktop Platform Version: 11.2.0"
+1720191962148 main info "Main~getRemoteInitPath:: "
+IPCClient ~ WindowHandler: New event is received { type: 'blur', windowId: 1 }
+1720191963313 main info "Main~getPlatformLaunchPerfMetrics"
+1720191963440 main info "INTERCEPTOR CONNECTIVITY: Attempting to start websocket server on port 15611"
+1720191965055 main info "Main - model-events~user - (user, bootstrapUser) received"
+1720191965055 main info "model-events~user - bootstrapUser received"
+IPCClient ~ WindowHandler: New event is received { type: 'focus', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'blur', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'focus', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'blur', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'focus', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'blur', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'focus', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'unmaximize', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'enter-full-screen', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'resize', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'blur', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'focus', windowId: 1 }
+IPCClient ~ WindowHandler: New event is received { type: 'resize', windowId: 1 }
+1720341914853 main info "WindowManager~closeHandler - Closed Window (id: 1 )"
+IPCClient ~ WindowHandler: New event is received { type: 'window-closed', windowId: 1 }
+TypeError: Cannot read properties of undefined (reading 'send')
+    at Object.sendMessageToInterceptor (/snap/postman/259/usr/share/postman/resources/app/services/websocketServer.js:144:10)
+    at Object.requesterWindowHandler (/snap/postman/259/usr/share/postman/resources/app/services/websocketServer.js:389:14)
+    at EventEmitter.emit (node:events:539:35)
+    at EventEmitter.emit (node:domain:475:12)
+    at _dispatch (/snap/postman/259/usr/share/postman/resources/app/common/_event-bus.js:256:14)
+    at EventBus._publish (/snap/postman/259/usr/share/postman/resources/app/common/_event-bus.js:207:9)
+    at Object.closedHandler (/snap/postman/259/usr/share/postman/resources/app/services/windowManager.js:1090:18)
+    at BrowserWindow.emit (node:events:527:28)
+    at BrowserWindow.emit (node:domain:475:12)
+1720341914900 main error "Main~handleUncaughtError - Uncaught errors",{"name":"TypeError","message":"Cannot read properties of undefined (reading 'send')","stack":"TypeError: Cannot read properties of undefined (reading 'send')\n    at Object.sendMessageToInterceptor (/snap/postman/259/usr/share/postman/resources/app/services/websocketServer.js:144:10)\n    at Object.requesterWindowHandler (/snap/postman/259/usr/share/postman/resources/app/services/websocketServer.js:389:14)\n    at EventEmitter.emit (node:events:539:35)\n    at EventEmitter.emit (node:domain:475:12)\n    at _dispatch (/snap/postman/259/usr/share/postman/resources/app/common/_event-bus.js:256:14)\n    at EventBus._publish (/snap/postman/259/usr/share/postman/resources/app/common/_event-bus.js:207:9)\n    at Object.closedHandler (/snap/postman/259/usr/share/postman/resources/app/services/windowManager.js:1090:18)\n    at BrowserWindow.emit (node:events:527:28)\n    at BrowserWindow.emit (node:domain:475:12)"}
+Main~handleUncaughtError - Uncaught errors TypeError: Cannot read properties of undefined (reading 'send')
+    at Object.sendMessageToInterceptor (/snap/postman/259/usr/share/postman/resources/app/services/websocketServer.js:144:10)
+    at Object.requesterWindowHandler (/snap/postman/259/usr/share/postman/resources/app/services/websocketServer.js:389:14)
+    at EventEmitter.emit (node:events:539:35)
+    at EventEmitter.emit (node:domain:475:12)
+    at _dispatch (/snap/postman/259/usr/share/postman/resources/app/common/_event-bus.js:256:14)
+    at EventBus._publish (/snap/postman/259/usr/share/postman/resources/app/common/_event-bus.js:207:9)
+    at Object.closedHandler (/snap/postman/259/usr/share/postman/resources/app/services/windowManager.js:1090:18)
+    at BrowserWindow.emit (node:events:527:28)
+    at BrowserWindow.emit (node:domain:475:12)
